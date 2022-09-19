@@ -2,8 +2,10 @@ using Graphs
 using SimpleWeightedGraphs
 using CSV
 using DataFrames
+using DelimitedFiles
 
 export load_graph_from_edgelist
+export save_graph_as_edgelist
 export export_data_frame_to_csv
 
 
@@ -64,4 +66,18 @@ function load_graph_from_edgelist(filepath, dlm=isspace)
         end
         return G
     end
+end
+
+function save_graph_as_edgelist(G::SimpleGraph, filepath)
+    open(filepath, "w") do io
+        writedlm(io, ([e.src, e.dst] for e in edges(G)))
+    end
+    return true
+end
+
+function save_graph_as_edgelist(G::SimpleWeightedGraph, filepath)
+    open(filepath, "w") do io
+        writedlm(io, ([e.src, e.dst, e.weight] for e in edges(G)))
+    end
+    return true
 end
