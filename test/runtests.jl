@@ -8,7 +8,8 @@ using .NetworkCurvature
 const testdir = dirname(@__FILE__)
 
 tests = [
-    "curvature"
+    "curvature",
+    "persistence"
 ]
 
 @testset "NetworkCurvature" begin
