@@ -11,19 +11,25 @@ During this work I also studied Forman's curvature on weighted graphs. The _Grap
 ## Forman's discretisation
 
 For graphs with edge weights, Forman's Ricci curvature is an edge based notion given by the following formula
+
 $$
 \mathrm{Ric}(e) = 2 - \sqrt{w_e} \left( \sum_{f > u, \ f \neq e}\frac{1}{\sqrt{w_f}} + \sum_{f > v, \ f \neq e} \frac{1}{\sqrt{w_f}} \right)
 $$
+
 where $f>u$ refers to an edge $f$ that is connected to vertex $u$, and $w_e$ is the weight of edge $e$. For graphs that are unweighted (so with edge weight $1$), this formula simplifies to
+
 $$
-\mathrm{Ric}(e) = 2- \mathrm{deg}(u) - \mathrm{deg}(v) 
+\mathrm{Ric}(e) = 2 - \mathrm{deg}(u) - \mathrm{deg}(v) 
 $$
+
 for an edge $e$ with endpoints $u$ and $v$.
 
 We define the curvature of a vertex $v$ to be 
+
 $$
-\mathrm{Ric}(v) = \sum_{e \sim v} \mathrm(Ric)(e)
+\mathrm{Ric}(v) = \sum_{e \sim v} \mathrm{Ric}(e)
 $$
+
 where the sum is taken over all edges adjacent to vertex $v$. 
 
 Functions implementing the above can be found in `src/curvature.jl` 
@@ -42,6 +48,8 @@ For my project, I compared curvature to other network statistics. The source cod
 | Astrophysics | 18 772 | 198 110 | Unweighted |
 | bio-WormNet-v3 | 16 347 | 762 822 | Weighted |
 | cond-mad-2003 |30 460 | 120 029 | Weighted |
+
+The scripts included will produce `csv` files with statistics for all the nodes or edges in the graphs.
 
 ## Multi-Threading
 
