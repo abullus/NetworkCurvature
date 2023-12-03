@@ -20,7 +20,7 @@ Returns the value of Forman's Ricci curvature for a given edge in a graph.
 We use a modified algorithm for performance. 
 
 ``
-= 4 - \\sqrt{w_e} \\left( \\sum_{f > u}\\frac{1}{\\sqrt{w_f}} + \\sum_{f > v} \\frac{1}{\\sqrt{w_f}} \\right)
+\\mathrm{Ric}(e)= 4 - \\sqrt{w_e} \\left( \\sum_{f > u}\\frac{1}{\\sqrt{w_f}} + \\sum_{f > v} \\frac{1}{\\sqrt{w_f}} \\right)
 ``
 
 """

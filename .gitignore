@@ -25,3 +25,5 @@ Manifest.toml
 
 # The project generates csv files, but we do not need to track them
 **/*.csv
+
+.vscode/
