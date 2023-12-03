@@ -22,12 +22,10 @@ function export_data(filename)
     lcc = round_vec(local_clustering_coefficient(G))
     println("Eigenvector centrality...")
     eig_cen = round_vec(eigenvector_centrality(G))
-    #=
     println("Closeness centrality...")
     closeness = round_vec(closeness_centrality(G))
     println("Katz centrality...")
     katz = round_vec(katz_centrality(G))
-    =#
 
     df = DataFrame()
     df.Node = [v for v in vertices(G)]
@@ -38,21 +36,19 @@ function export_data(filename)
     df.Pagerank = pagerank
     df.Local_Clustering_Coefficient = lcc
     df.Eigenvector_Centrality = eig_cen
-    # df.Closeness_Centrality = closeness
-    # df.Katz_Centrality = katz
+    df.Closeness_Centrality = closeness
+    df.Katz_Centrality = katz
         
 
     export_data_frame_to_csv(df, filename*"-NodeData.csv")
 end
 
-#=
-files = ["rec-eachmovie-clean"]#["inf-USAir97" , "eco-florida", "cond-mat-2003", "bio-WormNet-v3",  "rec-eachmovie"]
-for filename in files
-    print("Generating for dataset: ", filename)
-    export_data(filename)
-    println(" done!")
-end
-=#
+datasets = [
+    "bio-WormNet-v3.edges",
+    "cond-mat-2003.txt",
+    "Astrophysics.txt"
+]
 
-#export_data("demos/bio-WormNet-v3.edges")
-export_data("demos/cond-mat-2003.txt")
+for dataset in datasets
+    export_data("datasets/"*dataset)
+end

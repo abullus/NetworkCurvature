@@ -8,10 +8,10 @@ export get_weighted_graph
 export get_edge_curvature_distribution
 export get_node_curvature_distribution
 
-## TODO: Parallelism
 function get_edge_curvature(G::SimpleGraph, e::Edge)
     return 4 - degree(G, e.src) - degree(G, e.dst)
 end
+
 get_edge_curvature(G::Graph, src::Int64, dst::Int64) = get_edge_curvature(G, Edge(src, dst))
 
 """
@@ -39,6 +39,7 @@ function get_edge_curvature(G::SimpleWeightedGraph, e::Edge)
     end
     return 4 - sqrt(w_e)*contribution
 end
+
 get_edge_curvature(G::SimpleWeightedGraph, src::Int64, dst::Int64) = get_edge_curvature(G, Edge(src, dst))
 
 function get_edge_curvature_distribution(G::SimpleGraph)

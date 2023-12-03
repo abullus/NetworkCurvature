@@ -45,15 +45,12 @@ function export_data(filename)
     export_data_frame_to_csv(df, filename*"-EdgeData.csv")
 end
 
-#=
-files =  ["bio-WormNet-v3.edges"]
-for filename in files
-    print("Generating for dataset: ", filename)
-    export_data(filename)
-    println(" done!")
-end
-=#
+datasets = [
+    "bio-WormNet-v3.edges",
+    "cond-mat-2003.txt",
+    "Astrophysics.txt"
+]
 
-#export_data("demos/bio-WormNet-v3.edges")
-export_data("demos/cond-mat-2003.txt")
-export_data("demos/Astrophysics.txt")
+for dataset in datasets
+    export_data("datasets/"*dataset)
+end
